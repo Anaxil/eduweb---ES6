@@ -27,12 +27,15 @@ function EventEmitter() {
     
     function Database(url) {
     
+        EventEmitter.call(this);
         this.url = url;
     
     }
     
     /* DODANA LINIJKA */
-    Database.prototype = new EventEmitter();
+    Database.prototype = Object.create(EventEmitter.prototype);
+    Database.prototype.constructor = Database;
+    
 
     Database.prototype.connect = function() {
     
